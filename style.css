@@ -10,15 +10,32 @@ body {
 }
 
 .nav {
-  font-family: Geist Mono;
   display: flex;
-  color: antiquewhite;
+  width: 250px;
+  border: solid 2px #ececec10;
+  border-radius: 30px;
+  font-size:18px;
+  font-family: Geist Mono;
+  color: #ececec; 
   align-items: center;
   justify-content: center;
-  padding: 12px;
-  margin: 12px;
+  margin: 8px auto;
+  background-color: #ececec20;
+  backdrop-filter: blur(3px);
+  max-height: 30px;
 }
 
 .nav p{
     padding: 12px;
+}
+
+.name-container{
+  color: #ececec; 
+  text-shadow: 0 2px 10px rgba(214, 156, 49, 0.800); 
+  font-family: Geist Mono;
+  margin:200px auto;
+  max-width: 400px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }

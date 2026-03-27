@@ -1,30 +1,38 @@
-const dateElement = document.getElementById("nav");
+const timeElement = document.getElementById("nav");
 const realTime = new Date();
 
 function time() {
-
-  let hour = realTime.getHours();
-  let minute = realTime.getMinutes();
+let minute = realTime.getMinutes();
+let hour = realTime.getHours();
 
   minute = fixtime(minute);
   hour = fixtime(hour);
 
-  dateElement.innerHTML = (` 
-    <p>
-      ${hour} : ${minute}
-    </p>`
 
+
+  const date = document.getElementById("date")
+  const currentdate = new Intl.DateTimeFormat("sv-SE", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(realTime);
+
+    timeElement.innerHTML = (` 
+    <p><strong>
+      ${hour}:${minute} 
+    </strong></p>
+    <p> ${currentdate}</p>`
   );
-
-  
-    setTimeout(time(), 10000);
 }
 
-function fixtime(s){
-    if(s < 10){
-        s ="0"+s;
+
+  setTimeout(time(), 1000);
+
+function fixtime(t){
+    if(t < 10){
+        t ="0"+t;
     }
-    return s;
+    return t;
 }
 
 document.getElementById("editDash").contentEditable;
