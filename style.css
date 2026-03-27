@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+body {
+  margin: 0;
+  background-image: url(/assets/Erdtree.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.nav {
+  font-family: Geist Mono;
+  display: flex;
+  color: antiquewhite;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  margin: 12px;
+}
+
+.nav p{
+    padding: 12px;
+}
