@@ -1,16 +1,14 @@
 const timeElement = document.getElementById("nav");
-const realTime = new Date();
 
 function time() {
-let minute = realTime.getMinutes();
-let hour = realTime.getHours();
+const realTime = new Date();
 
-  minute = fixtime(minute);
-  hour = fixtime(hour);
+  const clock = Intl.DateTimeFormat("sv-SE",{
+    hour: "2-digit",
+    minute: "2-digit",
+  }
+  ).format(realTime);
 
-
-
-  const date = document.getElementById("date")
   const currentdate = new Intl.DateTimeFormat("sv-SE", {
     day: "2-digit",
     month: "long",
@@ -19,20 +17,17 @@ let hour = realTime.getHours();
 
     timeElement.innerHTML = (` 
     <p><strong>
-      ${hour}:${minute} 
+      ${clock} 
     </strong></p>
     <p> ${currentdate}</p>`
   );
+
+    console.log("Did this run?")
+
 }
 
+setInterval(time ,1000);
 
-  setTimeout(time(), 1000);
+time();
 
-function fixtime(t){
-    if(t < 10){
-        t ="0"+t;
-    }
-    return t;
-}
-
-document.getElementById("editDash").contentEditable;
+document.getElementById("editDash").contentEditable = true;
