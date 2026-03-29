@@ -7,6 +7,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav {
@@ -30,12 +32,88 @@ body {
 }
 
 .name-container{
-  color: #ececec; 
-  text-shadow: 0 2px 10px rgba(214, 156, 49, 0.800); 
+  color: #ffffff; 
+  text-shadow: 0 15px 10px rgb(0, 0, 0); 
   font-family: Geist Mono;
-  margin:200px auto;
+  margin:200px auto 30px auto;
   max-width: 400px;
   display:flex;
   justify-content: center;
   align-items: center;
 }
+
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container{
+  font-family: Geist Mono;
+  color:#f3f3f3;
+  text-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); 
+  background-color: #ececec20;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 280px;
+  height: 350px;
+  padding: 20px 10px;
+  margin: 4px;
+  border-radius: 1rem;
+  backdrop-filter: blur(13px);
+}
+
+.content{
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Geist mono;
+  width: 95%;
+  height: 95%;
+}
+
+.forecast-row{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.forecast-card{
+  background-color: #ffffff;
+  border: 1px solid rgba(255,255,255, 0.3);
+  padding: 15px 8px;
+  border-radius: 12px;
+  font-family: Geist Mono;
+  color:black;
+  box-shadow: 0, 4px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 12px;
+}
+
+.forecast-icon{
+  font-size:x-large;
+}
+
+.forecast-temp{
+  font-weight: bold;
+}
+
+.forecast-desc{
+  font-weight: 500;
+  font-size:14px;
+}
+
+.btn{
+  color:black;
+  background-color: rgb(255, 255, 255);
+  border: rgba(255, 255, 255, 0.349) solid 2px;
+  border-radius: 8px;
+  font-family: Geist Mono;
+}
+
+
+

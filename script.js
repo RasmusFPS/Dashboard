@@ -1,6 +1,113 @@
+const openMetroUrl = 'https://api.open-meteo.com/v1/forecast?';
+
+//codes to determine the weather forecast
+function getWeatherCode(code){
+  if (code == 0) return {text: 'Clear', icon:'🔆'};
+  if (code == 1 || code == 2 || code == 3) return {text: 'Cloudy', icon:'☁️'};
+  if (code == 45 || code == 48) return {text: 'Foggy', icon:'🌫️'};
+  if (code >= 51 && code <= 67) return {text: 'Rainy', icon:'🌧️'};
+  if ((code >= 71 && code <= 77) || (code == 85 || code == 86)) {
+  return {text: 'Snowy', icon:'🌨️'};
+  }
+  if (code >= 95) return {text:'Lightning', icon:'🌩️'};
+
+  return{text:'temp'};
+}
+
+//all purpose apifetch
+async function apifetch(url){
+  const response = await fetch(url);
+
+  try{
+    if(!response.ok){
+      throw new Error("Couldnt not fetch image:" +response.statusText);
+    }
+    const data = await response.json();
+    console.log(data)
+
+    return data;
+  } catch(error){
+    throw new error("ApiFetch not work LAWL: "+error)
+  }
+}
+
+//gets my location if accepted
+function Geo(){
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(getWeather, showError);
+  }
+  else
+  {
+    console.error("Geolocation is not supported by this browser."); 
+  }
+}
+
+//error thrown if i block geolocation
+function showError(error) {
+  console.warn(`Location error: ${error.message}`);
+  document.getElementById("weather-container").innerHTML = "<p>Nekad platsåtkomst.</p>";
+}
+
+//takes the geolocation and then throws it in the apikey
+async function getWeather(pos) {
+  const lat = pos.coords.latitude;
+  const lon = pos.coords.longitude;
+
+  const url = `${openMetroUrl}latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max&forecast_days=3&timezone=Europe/Stockholm`
+  const weatherContainer = document.getElementById("weather");
+
+  try{
+    const data = await apifetch(url)
+
+    const daily = data.daily;
+
+    let forecast = `<div class="forecast-row">`
+    for(let i = 0; i < 3; i++){
+
+      const temp = daily.temperature_2m_max[i];
+      const weatherCode = daily.weather_code[i];
+
+      const weather = getWeatherCode(weatherCode)
+
+
+      let days = "";
+      if(i == 0){
+        days = "Today";
+      }
+      else if (i == 1){
+        days = "Tomorrow";
+      }
+      else{
+        const date = new Date(daily.time[i]);
+        days = date.toLocaleDateString("en-EN", {weekday:"short"});
+
+        days = days.charAt(0).toUpperCase() + days.slice(1);
+      }
+
+        forecast += `
+        <div class="forecast-card">
+          <span class="forecast-day"><strong>${days}</strong></span>
+          <span class="forecast-icon">${weather.icon}</span>
+          <span class="forecast-temp"> ${temp}°C</span>
+          <span class="forecast-desc">${weather.text}</span>
+        </div>`;
+    }
+    
+        forecast += `</div>`;
+        weatherContainer.innerHTML = forecast;
+
+  } catch(error){
+    console.error("error", error);
+    weatherContainer.innerHTML = `<p>couldnt load weather</p>`
+  };
+}
+
+Geo();
+
+
 const timeElement = document.getElementById("nav");
 
-function time() {
+function timeAndDate() {
 const realTime = new Date();
 
   const clock = Intl.DateTimeFormat("sv-SE",{
@@ -21,13 +128,12 @@ const realTime = new Date();
     </strong></p>
     <p> ${currentdate}</p>`
   );
-
     console.log("Did this run?")
-
 }
 
-setInterval(time ,1000);
+setInterval(timeAndDate ,1000);
 
-time();
+timeAndDate();
 
 document.getElementById("editDash").contentEditable = true;
+
