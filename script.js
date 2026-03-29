@@ -1,8 +1,13 @@
 const openMetroUrl = 'https://api.open-meteo.com/v1/forecast?';
+const pokeURL = "https://pokeapi.co/api/v2/pokemon/";
+
 
 //notes in textarea
 const Enotes = document.getElementById("notes");
 Enotes.value = localStorage.getItem("note") || "";
+Enotes.addEventListener("input", ()=> {
+  localStorage.setItem("note", Enotes.value)
+})
 
 //codes to determine the weather forecast
 function getWeatherCode(code){
@@ -132,7 +137,6 @@ const realTime = new Date();
     </strong></p>
     <p> ${currentdate}</p>`
   );
-    console.log("Did this run?")
 }
 
 setInterval(timeAndDate ,1000);
@@ -141,8 +145,30 @@ timeAndDate();
 
 document.getElementById("editDash").contentEditable = true;
 
+async function getPokemon(){
+  let rndPokemon = Math.floor(Math.random() * 151) +1;
 
-Enotes.addEventListener("input", ()=> {
-  localStorage.setItem("note", Enotes.value)
-})
+  url = `${pokeURL}/${rndPokemon}`
+  const container = document.getElementById("Pokemon");
 
+  try{
+    const response = await apifetch(url);
+    console.log(response);
+    const sprites = response.sprites.front_default;
+    const pokeName = response.name;
+
+    container.innerHTML= `
+    <div class="poke-info">
+      <img src="${sprites}" alt="${pokeName}">
+      <h3>Pokemon: ${pokeName}</h3>
+      <h3>PokeDex ID:${rndPokemon}</h3>
+    </div>
+    `
+  }catch(error){
+  console.error(error)
+  console.log(rndPokemon)
+  container.innerHTML = `<p> couldnt find the Pokemon </p>`;
+  } 
+}
+
+getPokemon();
