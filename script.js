@@ -1,5 +1,9 @@
 const openMetroUrl = 'https://api.open-meteo.com/v1/forecast?';
 
+//notes in textarea
+const Enotes = document.getElementById("notes");
+Enotes.value = localStorage.getItem("note") || "";
+
 //codes to determine the weather forecast
 function getWeatherCode(code){
   if (code == 0) return {text: 'Clear', icon:'🔆'};
@@ -136,4 +140,9 @@ setInterval(timeAndDate ,1000);
 timeAndDate();
 
 document.getElementById("editDash").contentEditable = true;
+
+
+Enotes.addEventListener("input", ()=> {
+  localStorage.setItem("note", Enotes.value)
+})
 
