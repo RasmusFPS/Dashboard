@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>Dashboard</title>
   </head>
-  <body onload="time()">
+  <body>
     <header class="nav" id="nav">
       <p class="time">time</p>
       <p id="date">date</p>
@@ -14,10 +14,36 @@
     <div class="name">
       <h1 id="editDash" contenteditable="true" class="name-container">RasmusFPS Dashboard</h1>
     </div>
-    <div class="main-container">
-      <div></div>
-    </div>
+    <section class="row">
+      <div class="container">
+        <h3>Links</h3>
+        <div class="content" id="links">
+          <button class="btn">CLICK ME</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Weather</h3>
+        <div class="content" id="weather">
+          <div class="weather-card"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>News</h3>
+        <div class="content" id="tbd">
+          <h3>HELLO</h3>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Notes</h3>
+        <div class="content" id="notes">
+          <textarea contenteditable="true" class="content"></textarea>
+        </div>
+      </div>
+    </section>
   </body>
 
-  <script src="script.js"></script>
+  <script src="script.js"> </script>
 </html>
