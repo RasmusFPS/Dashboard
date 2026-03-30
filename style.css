@@ -8,9 +8,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  transition: background-image 0.5s ease-in-out;
 }
 
 .nav {
@@ -60,6 +63,7 @@ body {
   flex-direction: column;
   width: 280px;
   height: 350px;
+  max-height: auto;
   padding: 20px 10px;
   margin: 4px;
   border-radius: 1rem;
@@ -67,6 +71,8 @@ body {
 }
 
 .content{
+  height: auto;
+  flex-grow: 1;
   position: relative;
   display:flex;
   flex-direction: column;
@@ -138,13 +144,14 @@ body {
 }
 
 .pokemon-card{
-  font-family:"Tiny5";
+  font-family:Geist mono;
+  text-shadow: none !important; 
   display: flex;
   background-color: rgb(112, 111, 111);
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   color: rgb(255, 255, 255);
   justify-content: center;
@@ -161,6 +168,130 @@ body {
   image-rendering: pixelated;
 }
 
+.hidden{
+  display: none !important;
+}
+.modal{
+  font-family: Geist mono;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content{
+  padding:12px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  width:450px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap:12px;
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.8);
+}
+
+.modal-content input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.save-btn{
+  border: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  max-width: 75px;
+  background-color: #c9c2c2;
+}
+
+.save-btn:hover{
+  background-color: #3b82f6;
+  transition: transform 300ms ease-in-out;
+  transform: scale(1.1);
+}
+
+.close-btn{
+  border: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  max-width: 75px;
+  background-color: #c9c2c2;
+}
+
+.close-btn:hover{
+  background-color: rgb(243, 43, 43);
+  transition: transform 300ms ease-in-out;
+  transform: scale(1.1);
+}
+
+.add-btn{
+  font-family: Geist mono;
+  font-size:14px;
+  max-height: 30px;
+  border-radius: 6px;
+  max-width: 120px;
+  width: 120px;
+  color:rgb(240, 240, 240);
+  background-color: rgb(143, 143, 143);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.add-btn:hover{
+  transition: transform 300ms ease-in-out;
+  transform: scale(1.1);
+}
+
+.shortcut-item{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background-color: white;
+  width:220px;
+  height: 30px;
+}
+
+.shortcut-item a{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+#links-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+footer{
+  position: fixed;    
+  bottom: 30px;        
+  left: 50%;           
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.bckg-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Geist mono;
+  font-size:14px;
+  max-height: 30px;
+  border-radius: 6px;
+  height: 30px;
+  width: 180px;
+  color:rgb(255, 255, 255);
+  background-color: rgb(105, 99, 43);
+  border-color: rgba(0, 0, 0, 0.1);
+}
 
 
 

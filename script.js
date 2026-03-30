@@ -1,12 +1,13 @@
 const openMetroUrl = 'https://api.open-meteo.com/v1/forecast?';
 const pokeURL = "https://pokeapi.co/api/v2/pokemon/";
+const backgroundButton = document.getElementById("bckg-button");
 
 
 //notes in textarea
 const Enotes = document.getElementById("notes");
 Enotes.value = localStorage.getItem("note") || "";
 Enotes.addEventListener("input", ()=> {
-  localStorage.setItem("note", Enotes.value)
+localStorage.setItem("note", Enotes.value)
 })
 
 //codes to determine the weather forecast
@@ -51,6 +52,8 @@ function Geo(){
   }
 }
 
+Geo();
+
 //error thrown if i block geolocation
 function showError(error) {
   console.warn(`Location error: ${error.message}`);
@@ -62,7 +65,7 @@ async function getWeather(pos) {
   const lat = pos.coords.latitude;
   const lon = pos.coords.longitude;
 
-  const url = `${openMetroUrl}latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max&forecast_days=3&timezone=Europe/Stockholm`
+  const url = `${openMetroUrl}latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max&forecast_days=3&timezone=auto`
   const weatherContainer = document.getElementById("weather");
 
   try{
@@ -111,9 +114,6 @@ async function getWeather(pos) {
   };
 }
 
-Geo();
-
-
 const timeElement = document.getElementById("nav");
 
 function timeAndDate() {
@@ -145,9 +145,11 @@ timeAndDate();
 
 document.getElementById("editDash").contentEditable = true;
 
+//Gets pokemon 
 async function getPokemon(){
   let rndPokemon = Math.floor(Math.random() * 151) +1;
-
+  
+  //fetches pokemon from pokeAPI
   url = `${pokeURL}/${rndPokemon}`
   const container = document.getElementById("Pokemon");
 
@@ -172,3 +174,21 @@ async function getPokemon(){
 }
 
 getPokemon();
+
+
+async function getBackground(){
+ try{
+  url = `https://api.unsplash.com/photos/random?client_id=8J-qzUidiQtaRCNuiXLHdkBR-EMusz6Yj-bGQ4dCpMk`
+  const response = await apifetch(url);
+  
+  const imageUrl = response.urls.regular;
+  
+  document.body.style.backgroundImage = `url('${imageUrl}')`;
+
+ }catch(error){
+  console.error("couldnt fetch background" + error)
+ }
+}
+
+backgroundButton.addEventListener("click", getBackground);
+

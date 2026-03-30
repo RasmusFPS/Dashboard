@@ -17,9 +17,9 @@
     <section class="row">
       <div class="container">
         <h3>Links</h3>
-        <div class="content" id="links">
-          <button>Add Link</button>
+        <div class="content" id="links-list">
         </div>
+        <button id="add-btn" class="add-btn">+ Add Link</button>
       </div>
 
       <div class="container">
@@ -45,7 +45,25 @@
         </div>
       </div>
     </section>
+    <div class="modal hidden" id="modal">
+      <div class="modal-content">
+        <h3>lägg till länk</h3>
+        <input type="text" id="linkName" placeholder="shortcut name"/>
+        <input 
+          type="url" 
+          name="" 
+          id="linkurl"
+          placeholder="https//:Google.com"
+          required/>
+        <button class="save-btn" id="save-btn" type="button">Save</button>
+        <button class="close-btn"id="close-btn" type="button">Close</button>
+      </div>
+    </div>
+    <footer>
+      <button class="bckg-button" id="bckg-button">Random background</button>
+    </footer>
   </body>
 
-  <script src="script.js"> </script>
+  <script src="script.js"></script>
+  <script src="Shortcut.js"></script>
 </html>
