@@ -137,12 +137,14 @@ const realTime = new Date();
     </strong></p>
     <p> ${currentdate}</p>`
   );
+
 }
 
 setInterval(timeAndDate ,1000);
 
 timeAndDate();
 
+document.body.style.backgroundImage = `url(assets/Erdtree.jpeg)`;
 document.getElementById("editDash").contentEditable = true;
 
 //Gets pokemon 
@@ -191,4 +193,3 @@ async function getBackground(){
 }
 
 backgroundButton.addEventListener("click", getBackground);
-
