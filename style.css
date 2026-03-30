@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background-image: url(./assets/Erdtree.jpeg);
+  background-image: url(/Dashboard/assets/Erdtree.jpeg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
