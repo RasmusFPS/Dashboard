@@ -3,6 +3,15 @@ const pokeURL = "https://pokeapi.co/api/v2/pokemon/";
 const backgroundButton = document.getElementById("bckg-button");
 
 
+const editdash = document.getElementById("editDash");
+const savedName = localStorage.getItem("dashboardName");
+if (savedName) {
+  editdash.textContent = savedName;
+}
+editdash.addEventListener("input", () => {
+  localStorage.setItem("dashboardName", editdash.textContent);
+});
+
 //notes in textarea
 const Enotes = document.getElementById("notes");
 Enotes.value = localStorage.getItem("note") || "";
