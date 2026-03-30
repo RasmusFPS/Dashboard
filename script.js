@@ -144,7 +144,6 @@ setInterval(timeAndDate ,1000);
 
 timeAndDate();
 
-document.body.style.backgroundImage = `url(assets/Erdtree.jpeg)`;
 document.getElementById("editDash").contentEditable = true;
 
 //Gets pokemon 
