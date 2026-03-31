@@ -332,5 +332,121 @@ footer{
   border-color: rgba(0, 0, 0, 0.1);
 }
 
+/* --- MOBILE RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  .nav {
+    width: 90%;
+    max-width: 300px;
+    margin: 8px auto;
+  }
+
+  .name-container {
+    margin: 50px auto 20px auto;
+    font-size: 24px;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+    min-height: 300px;
+    margin: 10px auto;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: 400px;
+    padding: 16px;
+  }
+
+  .shortcut-item {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  footer {
+    bottom: 15px;
+  }
+
+  .bckg-button {
+    font-size: 12px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .name-container {
+    margin: 30px auto 15px auto;
+    font-size: 20px;
+    max-width: 90%;
+  }
+
+  .nav {
+    width: 95%;
+    font-size: 14px;
+  }
+
+  .nav p {
+    padding: 8px;
+  }
+
+  .container {
+    width: 95%;
+    max-width: 100%;
+    height: auto;
+    min-height: 280px;
+    padding: 15px 5px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 20px;
+    padding: 12px;
+  }
+
+  .modal-content input {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .modal-content h3 {
+    font-size: 16px;
+  }
+
+  .shortcut-item {
+    width: 100%;
+    max-width: 100%;
+    padding: 6px 10px;
+    height: auto;
+  }
+
+  .add-btn {
+    font-size: 12px;
+    max-width: 100px;
+    width: 100px;
+  }
+
+  .bckg-button {
+    font-size: 11px;
+    width: 130px;
+  }
+}
+
 
 

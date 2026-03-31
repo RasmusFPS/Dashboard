@@ -88,7 +88,7 @@ async function getWeather(pos) {
       const temp = daily.temperature_2m_max[i];
       const weatherCode = daily.weather_code[i];
 
-      const weather = getWeatherCode(weatherCode)
+      const weather = getWeatherCode(weatherCode);
 
 
       let days = "";
